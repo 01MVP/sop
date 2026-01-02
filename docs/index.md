@@ -51,17 +51,20 @@ hero:
 | [**赞助商对接**](./roles/sponsor) | 赞助权益落地、大客户接待 |
 
 
-## 🚨 应急手册 (Quick Access) {#emergency}
+## 常用资源 (Quick Links) {#resources}
 
-如果现场发生以下状况，请立即联系相关负责人或查看应急预案：
+> **🔗 常用链接**：方便志愿者与组织者快速获取社区资源。
 
-- **网络/设备故障** ➔ [技术支持/中控](./roles/tech-support#emergency)
-- **环节严重超时** ➔ [计时/主持人](./roles/mc#emergency)
-- **物资缺失/损坏** ➔ [物料员/后勤](./roles/logistics#emergency)
-- **突发人员受伤/冲突** ➔ [活动主理人](./organizer/host-sop)
+| 资源名称 | 访问地址 |
+| :--- | :--- |
+| **加入群聊** | [join.hackathonweekly.com](https://join.hackathonweekly.com) |
+| **场地预约** | [space.hackathonweekly.com](https://space.hackathonweekly.com) |
+| **设计素材** | [Logo/排版素材汇总](http://logo.hackathonweely.com) |
+| **费用报销** | [社区报销申请表](https://hackathonweekly.feishu.cn/share/base/form/shrcnSg2UVWbBqh6qV4xwSHPi1c) |
+| **反馈建议** | [feedback.hackathonweekly.com](http://feedback.hackathonweekly.com) |
 
 
-## 💡 志愿者须知 (Must Read) {#volunteer-notices}
+##  志愿者须知 (Must Read) {#volunteer-notices}
 
 作为周周黑客松的志愿者，我们需要共同遵守以下准则：
 
