@@ -4,22 +4,22 @@ layout: home
 hero:
   name: 周周黑客松
   text: 活动执行 SOP
-  tagline: 助力创造者从 0 到 1 实现 MVP，快速找到前 100 个用户。
+  tagline: 简单、高效、有温度的活动执行指南。助力每一位创造者。
   actions:
     - theme: brand
-      text: 快速导航
+      text: 志愿者岗位导航
       link: "#navigation"
     - theme: alt
-      text: 活动组织者手册
+      text: 组织者策划手册
       link: "./organizer/"
 
-# features:
-#   - title: 活力与温暖
-#     details: 致力于帮助创造者从0到1实现最小可行产品（MVP），一起享受创造的乐趣。
-#   - title: 社区规模
-#     details: 10000+ 成员，遍布深杭广北上等城市，举办 200+ 场活动，沉淀 200+ 篇教程。
-#   - title: 核心目标
-#     details: 通过 AI 加速创意实现，助力千万创作者打造有价值、有意义、有趣的产品。
+features:
+  - title: 🚀 极速上手
+    details: 模块化的 SOP 设计，让第一次参与的志愿者也能在 5 分钟内掌握核心要点。
+  - title: 🤖 AI 赋能
+    details: 内置多种 AI 提示词，协助主理人写文案、写脚本、做复盘，解放生产力。
+  - title: 🤝 温暖连接
+    details: 不只是冷冰冰的流程，更强调人与人之间的连接与社区文化的传递。
 ---
 
 ## 快速导航 {#navigation}
@@ -40,7 +40,8 @@ hero:
 | [**技术支持**](./roles/tech-support) | 协助参与者解决 AI 工具使用问题 |
 | [**作品管理员**](./roles/submission) | 负责作品收集、路演顺序、投票统计 |
 | [**现场中控**](./roles/operator) | 负责音乐、PPT 播放、投屏切换 |
-| [**讲师/嘉宾**](./roles/demo) | 知识分享、实操演示、专业指导 |
+| [**分享嘉宾**](./roles/speaker) | 主题分享、控时、互动答疑 |
+| [**讲师**](./roles/demo) | 知识分享、实操演示、专业指导 |
 
 ### 🤝 统筹与外联 (管理)
 | 角色 | 核心职责 |

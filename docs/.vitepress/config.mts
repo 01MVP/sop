@@ -14,7 +14,7 @@ export default defineConfig({
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: '组织者手册', link: '/organizer/' },
+      { text: '组织者手册', link: '/organizer/host-sop' },
       { text: '角色列表', link: '/roles/' }
     ],
     search : {
@@ -38,6 +38,9 @@ export default defineConfig({
               { text: '技术支持', link: '/roles/tech-support' },
               { text: '作品管理员', link: '/roles/submission' },
               { text: '现场电脑操作员', link: '/roles/operator' },
+              { text: '分享嘉宾', link: '/roles/speaker' },
+              { text: '讲师', link: '/roles/demo' },
+              { text: '赞助商对接', link: '/roles/sponsor' },
               { text: '鼓励师/顾问', link: '/roles/advisor' },
               { text: '物料员', link: '/roles/material' },
               { text: '餐饮与后勤', link: '/roles/catering' },
@@ -48,16 +51,9 @@ export default defineConfig({
       {
         text: '🏗️ 组织者手册',
         items: [
-          { text: '组织者首页', link: '/organizer/' },
           { text: '活动主理人 SOP', link: '/organizer/host-sop' },
           { text: '策划指南与模板', link: '/organizer/planning' },
-          { text: '活动类型与核心流程', link: '/organizer/activity-types' },
-          { text: '讲师/嘉宾对接', items: [
-            { text: '讲师 SOP', link: '/roles/demo' },
-            { text: '分享嘉宾 SOP', link: '/roles/speaker' },
-            { text: '赞助商对接 SOP', link: '/roles/sponsor' },
-          ]},
-          { text: '社区工具箱与资源', link: '/organizer/resources' }
+          { text: '活动类型与资源', link: '/organizer/resources' }
         ]
       }
     ],
@@ -67,6 +63,10 @@ export default defineConfig({
     ]
   },
   markdown: {
+    image: {
+      // 默认禁用；设置为 true 可为所有图片启用懒加载。
+      lazyLoading: true
+    },
     config(md) {
       md.use(taskLists, { enabled: true })
     }
