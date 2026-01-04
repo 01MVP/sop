@@ -6,6 +6,8 @@ description: 使用 AI 快速定制你的活动 SOP
 
 # AI 智能创建指南
 
+[[toc]]
+
 ## ✨ 如何使用 AI 快速创建本次活动 SOP
 
 - **步骤 1**: 复制下方的 AI Prompt

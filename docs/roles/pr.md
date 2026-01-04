@@ -10,6 +10,8 @@ description: 海报、推文、现场直播
 你是活动的“记录者”和“传播者”。你的任务是捕捉现场的高光时刻，让社区内外的更多人看到创造者的力量，沉淀社区影响力。
 :::
 
+[[toc]]
+
 ## 一、常用工具与规范（建议收藏）
 *   [**公众号发布规范**](https://hackathonweekly.feishu.cn/wiki/A1lawCvxVipWBtkgbqXcqh2Ynxh)
 *   [**直播指南（视频号/小红书）**](https://hackathonweekly.feishu.cn/wiki/FFmiwixIAidyL4ksimicc4NVnld)
@@ -94,9 +96,6 @@ description: 海报、推文、现场直播
 4.  **数据说话**: "大家玩得很开心"不如"4小时产出了 12 个作品"有说服力。
 
 
-<div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-  <a href="./mc">⬅️ 上一岗位：主持人</a>
-  <a href="./operator">下一岗位：现场电脑操作员 ➡️</a>
-</div>
+
 
 

@@ -6,6 +6,8 @@ description: 常用资源链接汇总
 
 # 社区工具箱与资源
 
+[[toc]]
+
 ## 📺 直播与宣发
 *   **直播指南**: [社区视频号 & 小红书直播指南](https://hackathonweekly.feishu.cn/wiki/FFmiwixIAidyL4ksimicc4NVnld)
 *   **公众号规范**: [微信公众号发布规范与说明](https://hackathonweekly.feishu.cn/wiki/A1lawCvxVipWBtkgbqXcqh2Ynxh)

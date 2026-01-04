@@ -12,6 +12,8 @@ description: 控场、氛围、连接参与者
 
 主持人负责控场节奏、营造氛围、连接参与者，并与计时员和主理人协作保障流程顺畅。
 
+[[toc]]
+
 ## 一、活动前准备清单
 
 ### 📅 活动前
@@ -136,7 +138,4 @@ description: 控场、氛围、连接参与者
 3.  **克制**: 主持人不是主角，尽量把舞台留给参与者。
 
 
-<div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-  <a href="./logistics">⬅️ 上一岗位：后勤/签到</a>
-  <a href="./pr">下一岗位：宣发推送 ➡️</a>
-</div>
+

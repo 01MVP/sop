@@ -3,6 +3,8 @@
 
 VitePress 带有内置的 Markdown 扩展。
 
+[[toc]]
+
 # 引用 Logo
 
 ```md
