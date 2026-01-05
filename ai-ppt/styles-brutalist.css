@@ -1,0 +1,187 @@
+/* Minimal overrides for Reveal.js to work with Tailwind Neo-Brutalism */
+:root {
+  --r-background-color: #f0f0f0;
+  --r-main-font: "Courier Prime", monospace;
+  --r-heading-font: "Courier Prime", monospace;
+  --r-main-color: #000;
+  --r-heading-color: #000;
+  --r-link-color: #000;
+  --r-link-color-hover: #000;
+  --accent: #ff4d4f;
+  --muted: #555555;
+  --card: #f7f7f9;
+}
+
+.reveal {
+  font-family: "Courier Prime", monospace;
+}
+
+/* Ensure Tailwind utilities work nicely with Reveal's scaling */
+.reveal .slides section {
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: left; /* Reset default center align */
+}
+
+/* Override Reveal's default typography sizes if needed, 
+   but try to use Tailwind classes in HTML first */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Compact typography for timeline detail (vertical) slides */
+.reveal .compact-detail {
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+.reveal .compact-detail h3 {
+  font-size: 26px;
+}
+
+.reveal .compact-detail h4 {
+  font-size: 22px;
+}
+
+.reveal .compact-detail p,
+.reveal .compact-detail li {
+  font-size: 20px;
+}
+
+.reveal .compact-detail .detail-icon {
+  font-size: 32px;
+}
+
+.reveal .compact-detail .detail-caption {
+  font-size: 18px;
+}
+
+/* Custom Scrollbars for code blocks or overflow */
+::-webkit-scrollbar {
+  width: 12px;
+  background: #fff;
+  border-left: 3px solid #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000;
+}
+
+.reveal .center {
+  text-align: center;
+}
+
+.reveal .small {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.reveal .accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.reveal .muted {
+  color: var(--muted);
+}
+
+.reveal .two-col {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.reveal .grid-3x2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.reveal .grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.reveal .grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.reveal .img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.reveal .img.no-shadow {
+  box-shadow: none;
+}
+
+.reveal .img.qr {
+  width: 220px;
+  border-radius: 10px;
+}
+
+.reveal .img.tall {
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.reveal .stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  text-align: center;
+}
+
+.reveal .stat {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 16px;
+}
+
+.reveal .stat .num {
+  font-size: 2.2rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.reveal .stat .label {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.reveal .footer-note {
+  margin-top: 1em;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.reveal .cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.reveal .card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.reveal .bullet-list {
+  list-style: disc;
+  padding-left: 1.2em;
+}
+
+.reveal .bullet-list li {
+  margin-bottom: 0.4em;
+}

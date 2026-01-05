@@ -1,0 +1,34 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+temp/
+.idea/
+.vscode/
+*.swp
+*~
+
+# Node tooling (if added later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Build outputs / caches
+/dist
+/build
+.cache/
+.parcel-cache/
+.vite/
+.next/
+.nuxt/
+.out/
+coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example

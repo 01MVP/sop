@@ -1,15 +1,32 @@
 {
+  "name": "01mvp-vitepress-template",
+  "version": "1.0.0",
+  "description": "A simple, fast, and opinionated VitePress template for 01MVP.",
+  "author": "01MVP <contact@01mvp.com>",
+  "license": "MIT",
   "dependencies": {
     "markdown-it-footnote": "^4.0.0",
     "markdown-it-task-lists": "^2.1.1"
   },
   "devDependencies": {
-    "vitepress": "^2.0.0-alpha.15"
+    "@biomejs/biome": "^2.3.11",
+    "mermaid": "^11.12.2",
+    "vite-plugin-pwa": "^1.2.0",
+    "vitepress": "^2.0.0-alpha.15",
+    "vitepress-plugin-mermaid": "^2.0.17",
+    "vitepress-plugin-nprogress": "^0.1.1",
+    "vitepress-plugin-tabs": "^0.7.3",
+    "vitepress-sidebar": "^1.33.1"
   },
   "scripts": {
+    "dev": "vitepress dev docs",
+    "preview": "vitepress build docs && vitepress preview docs",
     "docs:clean-hr": "node scripts/remove-md-hr.js",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "format": "biome format --write .",
+    "lint": "biome lint --write .",
+    "check": "biome check --write ."
   }
 }

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fun Scroll Embed Brutalist</title>
+  <style>
+    :root {
+      --accent: #0000ff;
+      --text: #000000;
+      --bg: #ffffff;
+      --border: 3px solid #000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Courier Prime", "Courier New", monospace;
+      color: var(--text);
+      background: var(--bg);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .scroll {
+      height: 100vh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+    }
+
+    .panel {
+      height: 100vh;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
+      scroll-snap-align: start;
+      border-bottom: var(--border);
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      background: var(--text);
+      color: #fff;
+      padding: 5px 15px;
+    }
+
+    .panel p {
+      margin: 0;
+      max-width: 520px;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .panel:nth-child(1) {
+      background: #ffffff;
+    }
+
+    .panel:nth-child(2) {
+      background: #ffff00; /* Yellow */
+    }
+
+    .panel:nth-child(3) {
+      background: #00ff00; /* Green */
+    }
+
+    .panel:nth-child(4) {
+      background: #ff00ff; /* Magenta */
+    }
+
+    .badge {
+      padding: 6px 16px;
+      border: 2px solid #000;
+      background: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .counter {
+      font-size: 4rem;
+      font-weight: 700;
+      border: 3px solid #000;
+      padding: 10px;
+      background: #fff;
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    .btn {
+      border: 3px solid #000;
+      padding: 12px 24px;
+      border-radius: 0;
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: var(--accent);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      box-shadow: 6px 6px 0 #000;
+      transition: all 0.1s;
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .hint {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      background: #000;
+      color: #fff;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll">
+    <section class="panel">
+      <div class="badge">向上/向下滑动</div>
+      <h2>欢迎来到嵌入页</h2>
+      <p>这是一个可以在 PPT 内部上下滑动的 HTML 页面。</p>
+    </section>
+    <section class="panel">
+      <div class="badge">互动小按钮</div>
+      <h2>点击加速</h2>
+      <p>下面的计数器会随着点击增加，让现场更有参与感。</p>
+      <div class="counter" id="count">0</div>
+      <button class="btn" id="boost">点我 +1</button>
+    </section>
+    <section class="panel">
+      <div class="badge">活动气氛</div>
+      <h2>一起冲刺吧！</h2>
+      <p>用更有动感的嵌入页，为现场营造节奏感。</p>
+    </section>
+    <section class="panel">
+      <div class="badge">结束语</div>
+      <h2>下一个好点子</h2>
+      <p>欢迎大家继续向上/向下滑动探索更多内容。</p>
+    </section>
+  </div>
+  <div class="hint">⬆︎ / ⬇︎ 滑动</div>
+
+  <script>
+    const button = document.getElementById("boost");
+    const count = document.getElementById("count");
+    let value = 0;
+
+    button.addEventListener("click", () => {
+      value += 1;
+      count.textContent = value;
+    });
+  </script>
+</body>
+</html>

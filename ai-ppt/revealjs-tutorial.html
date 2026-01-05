@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reveal.js 入门教程（单文件版）</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+  <style>
+    .muted { color: #6b7280; }
+    .small { font-size: 0.7em; }
+    .two-col {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    .two-col > div { flex: 1; }
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      font-size: 0.6em;
+      letter-spacing: 0.02em;
+    }
+    pre code { font-size: 0.7em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Reveal.js 入门教程</h1>
+        <p>用一个 HTML 就能做出可分享的 PPT</p>
+        <p class="muted">参考官网：<a href="https://revealjs.com/zh-hant/">https://revealjs.com/zh-hant/</a></p>
+        <p class="small">方向键翻页；按 <strong>Esc</strong> 总览；按 <strong>S</strong> 打开演讲者视图</p>
+      </section>
+
+      <section>
+        <h2>你会学到什么</h2>
+        <ul>
+          <li>Reveal.js 是什么、能解决什么问题</li>
+          <li>最小可运行模板与文件结构</li>
+          <li>常用幻灯片写法：横向/纵向/逐条出现</li>
+          <li>常见进阶：Markdown、代码高亮、演讲者备注</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Reveal.js 是什么？</h2>
+        <div class="two-col">
+          <div>
+            <p>一个用 HTML/CSS/JS 做幻灯片的开源框架。</p>
+            <ul>
+              <li>网页即 PPT，浏览器即可演示</li>
+              <li>可版本管理，适合协作与复用</li>
+              <li>支持主题、插件、动画和演讲者模式</li>
+            </ul>
+          </div>
+          <div>
+            <p class="tag">适合人群</p>
+            <p>需要快速迭代、多人协作、能写一点 HTML 的小白。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>三步快速开始</h2>
+        <ol>
+          <li>准备一个 HTML 文件（本文件就是示例）</li>
+          <li>引入 Reveal.js 的 CSS 与 JS</li>
+          <li>按结构写 <code>&lt;section&gt;</code> 幻灯片并初始化</li>
+        </ol>
+        <p class="muted small">小白建议：用本地静态服务预览，避免浏览器安全限制。</p>
+      </section>
+
+      <section>
+        <h2>最小模板</h2>
+        <pre><code class="language-html">&lt;div class=&quot;reveal&quot;&gt;
+  &lt;div class=&quot;slides&quot;&gt;
+    &lt;section&gt;第一页&lt;/section&gt;
+    &lt;section&gt;第二页&lt;/section&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  Reveal.initialize({ hash: true });
+&lt;/script&gt;</code></pre>
+        <p class="small muted">提示：<code>hash: true</code> 会把当前页同步到 URL，便于分享。</p>
+      </section>
+
+      <section>
+        <h2>横向与纵向</h2>
+        <p>Reveal.js 支持「左右」与「上下」两种层级。</p>
+        <pre><code class="language-html">&lt;section&gt;
+  &lt;section&gt;上&lt;/section&gt;
+  &lt;section&gt;下&lt;/section&gt;
+&lt;/section&gt;</code></pre>
+        <p class="small muted">接下来这一组就是纵向示例，请按 ↑/↓。</p>
+      </section>
+
+      <section>
+        <section>
+          <h2>纵向页：上</h2>
+          <p>用于讲“一个主题的拆解”。</p>
+        </section>
+        <section>
+          <h2>纵向页：下</h2>
+          <p>继续补充细节或示例。</p>
+        </section>
+      </section>
+
+      <section>
+        <h2>逐条出现（Fragments）</h2>
+        <ul>
+          <li class="fragment">先出现第一条</li>
+          <li class="fragment">再出现第二条</li>
+          <li class="fragment">最后出现第三条</li>
+        </ul>
+        <p class="small muted">给元素加 <code>fragment</code> 类即可。</p>
+      </section>
+
+      <section data-background-color="#0f172a">
+        <h2 style="color: #f8fafc;">背景色示例</h2>
+        <p style="color: #cbd5f5;">使用 <code>data-background-color</code> 给某页上色。</p>
+        <pre><code class="language-html">&lt;section data-background-color=&quot;#0f172a&quot;&gt;...&lt;/section&gt;</code></pre>
+      </section>
+
+      <section>
+        <h2>演讲者备注</h2>
+        <p>台上展示内容与台下备注分离。</p>
+        <pre><code class="language-html">&lt;section&gt;
+  &lt;h2&gt;台上显示&lt;/h2&gt;
+  &lt;aside class=&quot;notes&quot;&gt;这是演讲者备注&lt;/aside&gt;
+&lt;/section&gt;</code></pre>
+        <aside class="notes">说明：按 S 打开演讲者视图。</aside>
+      </section>
+
+      <section>
+        <h2>用 Markdown 写幻灯片</h2>
+        <p class="muted">需要启用 Markdown 插件。</p>
+        <pre><code class="language-html">&lt;section data-markdown&gt;
+  &lt;textarea data-template&gt;
+    ## 标题
+    - 列表一
+    - 列表二
+  &lt;/textarea&gt;
+&lt;/section&gt;</code></pre>
+      </section>
+
+      <section>
+        <h2>代码高亮</h2>
+        <p class="muted">Reveal.js 自带高亮插件，只需引入即可。</p>
+        <pre><code class="language-js">function hello(name) {
+  return `Hello ${name}`;
+}
+
+console.log(hello("Reveal"));</code></pre>
+      </section>
+
+      <section>
+        <h2>初始化脚本（含插件）</h2>
+        <pre><code class="language-js">Reveal.initialize({
+  hash: true,
+  slideNumber: true,
+  plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+});</code></pre>
+        <p class="small muted">插件脚本需在 Reveal.js 后加载。</p>
+      </section>
+
+      <section>
+        <h2>嵌入网页示例</h2>
+        <p>这是一个嵌入的 HTML 页面，你可以尝试上下滑动它。</p>
+        <iframe data-src="embeds/fun-scroll.html" width="100%" height="500px" style="border: 2px solid #333; border-radius: 12px;"></iframe>
+      </section>
+
+      <section>
+        <h2>小白友好操作清单</h2>
+        <ul>
+          <li>本地预览：<code>python -m http.server 8000</code></li>
+          <li>打开：<code>http://localhost:8000/revealjs-tutorial.html</code></li>
+          <li>导出 PDF：加参数 <code>?print-pdf</code> 再打印</li>
+          <li>常用快捷键：←/→ 翻页，↑/↓ 纵向，Esc 总览</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>下一步建议</h2>
+        <ol>
+          <li>换主题：<a href="https://revealjs.com/zh-hant/themes/">官方主题</a></li>
+          <li>复制本文件，自定义你的内容</li>
+          <li>阅读官方示例：<a href="https://revealjs.com/zh-hant/examples/">官方案例</a></li>
+        </ol>
+        <p class="small muted">你已经可以用 Reveal.js 做出完整 PPT 了。</p>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

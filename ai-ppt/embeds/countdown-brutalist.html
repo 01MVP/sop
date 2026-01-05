@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brutalist Countdown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #E0E7FF;
+      --yellow: #FFDE59;
+      --blue: #5CE1E6;
+      --red: #FF5757;
+      --green: #7ED957;
+      --purple: #CB6CE6;
+      --black: #000000;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Courier Prime", "Courier New", monospace;
+      background: var(--bg);
+      color: var(--black);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .stage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .frame {
+      width: min(1200px, 92vw);
+      background: var(--white);
+      border: 6px solid var(--black);
+      box-shadow: 12px 12px 0 var(--black);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--yellow);
+      border: 3px solid var(--black);
+      padding: 6px 14px;
+      font-weight: 700;
+      box-shadow: 4px 4px 0 var(--black);
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .timer {
+      font-size: clamp(4.5rem, 12vw, 10rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-align: center;
+      background: var(--blue);
+      border: 6px solid var(--black);
+      padding: 16px 24px;
+      box-shadow: 10px 10px 0 var(--black);
+    }
+
+    .timer.urgent {
+      background: var(--red);
+      color: var(--white);
+      animation: pulse 0.9s infinite;
+    }
+
+    .timer.finished {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .control-label {
+      border: 3px solid var(--black);
+      padding: 4px 10px;
+      background: var(--white);
+      font-weight: 700;
+      box-shadow: 4px 4px 0 var(--black);
+      font-size: 0.95rem;
+    }
+
+    .chip {
+      border: 3px solid var(--black);
+      padding: 6px 12px;
+      background: var(--white);
+      font-weight: 700;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .btn {
+      border: 3px solid var(--black);
+      padding: 6px 12px;
+      background: var(--yellow);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn.secondary {
+      background: var(--blue);
+    }
+
+    .btn.long {
+      background: var(--green);
+    }
+
+    .btn.reset {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn.active {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .settings-panel {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      border: 3px solid var(--black);
+      background: var(--white);
+      padding: 12px;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .settings-panel.show {
+      display: flex;
+    }
+
+    .progress {
+      height: 18px;
+      border: 3px solid var(--black);
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--black);
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      width: 100%;
+      background: var(--green);
+      transition: width 0.4s linear;
+    }
+
+    .hint {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 3px solid var(--black);
+      background: var(--white);
+      padding: 10px 14px;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .tip-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .tip-text {
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    #slogan-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 32px;
+      z-index: 2;
+    }
+
+    .slogan-card {
+      padding: 10px 16px;
+      font-weight: 800;
+      border: 3px solid var(--black);
+      box-shadow: 6px 6px 0 var(--black);
+      text-transform: uppercase;
+      text-align: center;
+      max-width: min(80vw, 720px);
+      line-height: 1.35;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .slogan-card.fade {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(3px, 3px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="frame">
+      <div class="header">
+        <span class="badge">倒计时</span>
+        <h1 id="title">组队倒计时</h1>
+      </div>
+      <div class="timer" id="timer">05:00</div>
+      <div class="progress">
+        <div class="bar" id="bar"></div>
+      </div>
+      <div class="controls" id="controls">
+        <div class="control-row">
+          <button class="btn secondary" id="settings-btn">设置</button>
+          <button class="btn reset" id="reset-btn">重置</button>
+        </div>
+        <div class="settings-panel" id="settings-panel" aria-hidden="true">
+          <div class="meta">
+            <span class="chip" id="status">运行中</span>
+            <span class="chip" id="duration-label">总时长 5 分钟</span>
+            <span class="chip hint" id="hint">空白暂停/继续</span>
+          </div>
+          <div class="control-row">
+            <span class="control-label">快捷时间</span>
+            <button class="btn" data-duration="60">1 min</button>
+            <button class="btn" data-duration="180">3 min</button>
+            <button class="btn" data-duration="300">5 min</button>
+            <button class="btn" data-duration="480">8 min</button>
+            <button class="btn" data-duration="600">10 min</button>
+          </div>
+          <div class="control-row">
+            <span class="control-label">长时段</span>
+            <button class="btn long" data-duration="1800">30 min</button>
+            <button class="btn long" data-duration="3600">60 min</button>
+            <button class="btn long" data-duration="7200">120 min</button>
+          </div>
+        </div>
+        <div class="tip" id="tip" hidden>
+          <span class="tip-icon">💡</span>
+          <p class="tip-text" id="tip-text"></p>
+        </div>
+      </div>
+    </div>
+    <div id="slogan-layer" hidden>
+      <div class="slogan-card" id="slogan-card"></div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const parseNumber = (value) => {
+      if (value === null || value === "") {
+        return null;
+      }
+      const num = Number(value);
+      return Number.isFinite(num) ? num : null;
+    };
+
+    const titleEl = document.getElementById("title");
+    const timerEl = document.getElementById("timer");
+    const barEl = document.getElementById("bar");
+    const statusEl = document.getElementById("status");
+    const durationLabelEl = document.getElementById("duration-label");
+    const hintEl = document.getElementById("hint");
+    const tipEl = document.getElementById("tip");
+    const tipTextEl = document.getElementById("tip-text");
+    const controlsEl = document.getElementById("controls");
+    const settingsBtn = document.getElementById("settings-btn");
+    const settingsPanel = document.getElementById("settings-panel");
+
+    const title = params.get("title") || params.get("label") || "倒计时";
+    titleEl.textContent = title;
+
+    const durationParam = parseNumber(params.get("duration"));
+    const hours = parseNumber(params.get("hours")) || 0;
+    const minutes = parseNumber(params.get("minutes")) || 0;
+    const seconds = parseNumber(params.get("seconds")) || 0;
+
+    let totalSeconds = durationParam !== null ? durationParam : hours * 3600 + minutes * 60 + seconds;
+    if (!totalSeconds || totalSeconds <= 0) {
+      totalSeconds = 300;
+    }
+
+    let selectedDurationSeconds = totalSeconds;
+    let remainingSeconds = totalSeconds;
+    let running = params.get("autostart") !== "0" && params.get("start") !== "0";
+    let finished = false;
+
+    const formatTime = (sec) => {
+      const hoursLeft = Math.floor(sec / 3600);
+      const minutesLeft = Math.floor((sec % 3600) / 60);
+      const secondsLeft = sec % 60;
+      const pad = (value) => String(value).padStart(2, "0");
+      if (hoursLeft > 0) {
+        return `${pad(hoursLeft)}:${pad(minutesLeft)}:${pad(secondsLeft)}`;
+      }
+      return `${pad(minutesLeft)}:${pad(secondsLeft)}`;
+    };
+
+    const formatDurationLabel = (sec) => {
+      const hoursLeft = Math.floor(sec / 3600);
+      const minutesLeft = Math.floor((sec % 3600) / 60);
+      const secondsLeft = sec % 60;
+      const parts = [];
+      if (hoursLeft) parts.push(`${hoursLeft} 小时`);
+      if (minutesLeft) parts.push(`${minutesLeft} 分钟`);
+      if (!hoursLeft && !minutesLeft && secondsLeft) parts.push(`${secondsLeft} 秒`);
+      if (!parts.length) parts.push("0 秒");
+      return parts.join(" ");
+    };
+
+    const updateStatus = () => {
+      if (finished) {
+        statusEl.textContent = "时间到";
+        hintEl.textContent = "倒计时结束";
+        return;
+      }
+      statusEl.textContent = running ? "运行中" : "暂停中";
+      hintEl.textContent = running ? "点击暂停/继续" : "点击继续";
+    };
+
+    const updateDisplay = () => {
+      timerEl.textContent = formatTime(remainingSeconds);
+      const ratio = totalSeconds > 0 ? remainingSeconds / totalSeconds : 0;
+      barEl.style.width = `${Math.max(ratio * 100, 0)}%`;
+      timerEl.classList.toggle("urgent", remainingSeconds > 0 && remainingSeconds <= 60);
+      timerEl.classList.toggle("finished", remainingSeconds === 0);
+      updateStatus();
+    };
+
+    const presetButtons = Array.from(document.querySelectorAll("[data-duration]"));
+    const resetButton = document.getElementById("reset-btn");
+
+    const setActivePreset = (seconds) => {
+      presetButtons.forEach((btn) => {
+        const match = Number(btn.dataset.duration) === seconds;
+        btn.classList.toggle("active", match);
+      });
+    };
+
+    const setDuration = (seconds) => {
+      if (!Number.isFinite(seconds) || seconds <= 0) return;
+      totalSeconds = seconds;
+      selectedDurationSeconds = seconds;
+      remainingSeconds = seconds;
+      finished = false;
+      running = true;
+      durationLabelEl.textContent = `总时长 ${formatDurationLabel(totalSeconds)}`;
+      setActivePreset(seconds);
+      updateDisplay();
+    };
+
+    const resetTimer = () => {
+      remainingSeconds = selectedDurationSeconds;
+      finished = false;
+      running = true;
+      updateDisplay();
+    };
+
+    updateDisplay();
+    durationLabelEl.textContent = `总时长 ${formatDurationLabel(totalSeconds)}`;
+    setActivePreset(totalSeconds);
+
+    const tipParam = params.get("tip");
+    if (tipParam) {
+      tipEl.hidden = false;
+      tipTextEl.textContent = tipParam.split("|").join("\n");
+    }
+
+    const tick = () => {
+      if (!running || finished) return;
+      remainingSeconds = Math.max(remainingSeconds - 1, 0);
+      if (remainingSeconds === 0) {
+        finished = true;
+        running = false;
+      }
+      updateDisplay();
+    };
+
+    setInterval(tick, 1000);
+
+    document.body.addEventListener("click", () => {
+      if (finished) return;
+      running = !running;
+      updateStatus();
+    });
+
+    controlsEl.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
+    presetButtons.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const seconds = Number(btn.dataset.duration);
+        setDuration(seconds);
+      });
+    });
+
+    settingsBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = !settingsPanel.classList.contains("show");
+      settingsPanel.classList.toggle("show", isOpen);
+      settingsPanel.setAttribute("aria-hidden", String(!isOpen));
+      settingsBtn.classList.toggle("active", isOpen);
+    });
+
+    resetButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      resetTimer();
+    });
+
+    const fallbackSlogans = [
+      "周周创造周周见",
+      "每周一起，用 AI 创造好玩的作品",
+      "创造者随时可以回来的家",
+      "先完成再完美",
+      "just do it",
+      "先造个垃圾出来",
+      "Bug 是冲锋的勋章",
+      "Bug 不多，说明你没写",
+      "别 BB，能跑就行",
+      "完美=卡住",
+      "你不需要改变，你这样就很好",
+      "不需要外向",
+      "慢点也没关系",
+      "周周黑客松、周周见",
+      "爱 · 自由 · 创造"
+    ];
+
+    const palette = [
+      { bg: "#FFDE59", text: "#000000" },
+      { bg: "#5CE1E6", text: "#000000" },
+      { bg: "#FF5757", text: "#FFFFFF" },
+      { bg: "#7ED957", text: "#000000" },
+      { bg: "#CB6CE6", text: "#FFFFFF" },
+      { bg: "#000000", text: "#FFFFFF" }
+    ];
+
+    const sloganLayer = document.getElementById("slogan-layer");
+    const sloganCard = document.getElementById("slogan-card");
+    let slogans = [...fallbackSlogans];
+    let sloganIndex = Math.floor(Math.random() * slogans.length);
+
+    const pickNextSlogan = () => {
+      if (!slogans.length) return "";
+      const slogan = slogans[sloganIndex % slogans.length];
+      sloganIndex = (sloganIndex + 1) % slogans.length;
+      return slogan;
+    };
+
+    const applySlogan = (text) => {
+      const color = palette[Math.floor(Math.random() * palette.length)];
+      sloganCard.textContent = text;
+      sloganCard.style.background = color.bg;
+      sloganCard.style.color = color.text;
+      sloganLayer.hidden = false;
+    };
+
+    const rotateSlogan = (withFade) => {
+      if (!slogans.length) {
+        sloganLayer.hidden = true;
+        return;
+      }
+      const next = pickNextSlogan();
+      if (!next) return;
+      if (withFade) {
+        sloganCard.classList.add("fade");
+        window.setTimeout(() => {
+          applySlogan(next);
+          sloganCard.classList.remove("fade");
+        }, 220);
+      } else {
+        applySlogan(next);
+      }
+    };
+
+    const setSlogans = (list) => {
+      slogans = list;
+      sloganIndex = Math.floor(Math.random() * Math.max(slogans.length, 1));
+      rotateSlogan(false);
+    };
+
+    const slogansParam = params.get("slogans");
+    if (slogansParam) {
+      const list = slogansParam
+        .split("|")
+        .map((item) => item.trim())
+        .filter(Boolean);
+      if (list.length) {
+        setSlogans(list);
+      } else {
+        setSlogans(slogans);
+      }
+    } else {
+      setSlogans(slogans);
+    }
+
+    const rotationIntervalParam =
+      parseNumber(params.get("sloganInterval")) ||
+      parseNumber(params.get("flash")) ||
+      parseNumber(params.get("flashInterval"));
+    const rotationIntervalMs = rotationIntervalParam && rotationIntervalParam > 500 ? rotationIntervalParam : 2500;
+
+    setInterval(() => rotateSlogan(true), rotationIntervalMs);
+  </script>
+</body>
+</html>
+</html>
