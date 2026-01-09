@@ -5,11 +5,11 @@
   "author": "01MVP <contact@01mvp.com>",
   "license": "MIT",
   "dependencies": {
-    "markdown-it-footnote": "^4.0.0",
-    "markdown-it-task-lists": "^2.1.1"
+    "markdown-it-footnote": "^4.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.11",
+    "markdown-it-task-lists": "^2.1.1",
     "mermaid": "^11.12.2",
     "vite-plugin-pwa": "^1.2.0",
     "vitepress": "^2.0.0-alpha.15",
