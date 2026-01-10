@@ -56,7 +56,8 @@ features:
 | :----------- | :---------------------------------------------------------------------------------------------- |
 | **加入群聊** | [join.hackathonweekly.com](https://join.hackathonweekly.com)                                    |
 | **场地预约** | [space.hackathonweekly.com](https://space.hackathonweekly.com)                                  |
-| **设计素材** | [Logo/排版素材汇总](http://logo.hackathonweely.com)                                             |
+| **物料清单** | [📦 活动物料清单](/manual/materials)                                                             |
+| **设计素材** | [Logo/排版素材汇总](http://logo.hackathonweekly.com)                                            |
 | **费用报销** | [社区报销申请表](https://hackathonweekly.feishu.cn/share/base/form/shrcnSg2UVWbBqh6qV4xwSHPi1c) |
 | **反馈建议** | [feedback.hackathonweekly.com](http://feedback.hackathonweekly.com)                             |
 

@@ -16,10 +16,10 @@ AI PPT 的地址在
 - 预览构建：`bun run docs:preview`
 
 ## 项目结构
-- `docs/`：所有内容页面（Markdown）。
-- `docs/organizer/`：活动组织者（主理人）手册与工具。
-- `docs/roles/`：志愿者岗位角色相关页面。
-- `docs/.vitepress/config.mts`：站点配置、导航与侧边栏。
+- `docs/`：文档内容页面。
+- `docs/manual/`：活动组织者手册。
+- `docs/roles/`：志愿者岗位角色说明。
+- `docs/config.mts`：站点配置文件。
 
 ## 贡献方式
 - 修改范围保持聚焦，只更新你涉及的页面。

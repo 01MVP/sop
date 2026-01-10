@@ -25,6 +25,11 @@ description: 活动主理人必读的百科全书
 - **执行期**：现场统筹、设备调试、氛围调动、应急处理。
 - **收尾期**：大合影、志愿者聚餐、复盘归档。
 
+### ⚠️ 应急预案 (Emergency Response)
+- **网络故障**：确备用手机热点或离线 PPT。
+- **嘉宾缺席**：主理人或主持人准备 15 分钟备用分享（如社区介绍、破冰游戏延长）。
+- **设备故障**：准备备用转接头；若投屏失败，直接口述或用白板。
+
 
 ## 第二部分：标准活动时间轴 (Run of Show)
 
@@ -77,6 +82,7 @@ description: 活动主理人必读的百科全书
 * **社区可用场地**： https://space.hackathonweekly.com
 * **社区 SOP**： https://sop.01mvp.cn
 * **社区 Logo**： https://logo.hackathonweekly.com
+* **物料清单**： [📦 活动物料清单](./materials.md)
 
 ### 📺 直播与宣发
 *   **直播指南**: [社区视频号 & 小红书直播指南](https://hackathonweekly.feishu.cn/wiki/FFmiwixIAidyL4ksimicc4NVnld)
